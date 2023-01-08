@@ -6,17 +6,17 @@ import NavBar from "../components/nav/navbar";
 import Card from "../components/card/card";
 import SectionCards from "../components/card/section-cards";
 
-import { getVideos } from "../lib/videos";
+import { getPopularVideos, getVideos } from "../lib/videos";
 
 export async function getServerSideProps(context) {
   const disneyVideos = await getVideos("Avengers");
   const productivityVideos = await getVideos("takeuforward");
 
   const travelVideos = await getVideos("Europe Travel");
-  // const popularVideos = await getVideos();
+  const popularVideos = await getVideos();
 
   return {
-    props: { disneyVideos, travelVideos, productivityVideos }, // will be passed to the page component as props
+    props: { disneyVideos, travelVideos, productivityVideos, popularVideos }, // will be passed to the page component as props
   };
 }
 
@@ -24,6 +24,7 @@ export default function Home({
   disneyVideos,
   travelVideos,
   productivityVideos,
+  popularVideos
 }) {
   console.log({ disneyVideos });
   return (
@@ -47,7 +48,7 @@ export default function Home({
           videos={productivityVideos}
           size="small"
         />
-        <SectionCards title="Popular" videos={disneyVideos} size="small" />
+        <SectionCards title="Popular" videos={popularVideos} size="small" />
       </div>
     </div>
   );
