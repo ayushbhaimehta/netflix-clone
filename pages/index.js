@@ -20,7 +20,7 @@ export default function Home() {
       <NavBar />
       <Banner
         title="hi there "
-        subtitle="this is some random text"
+        subTitle="this is some random text"
         imgUrl="/static/clifford.webp"
       />
       <Card />
