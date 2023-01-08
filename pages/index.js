@@ -6,20 +6,21 @@ import NavBar from "../components/nav/navbar"
 // import Card from "../components/card/card"
 import Loading from "../components/loading/loading"
 import SectionCards from "../components/card/section-cards"
-
+import { getVideos } from "../lib/videos"
 
 export default function Home() {
-  const disneyVideos = [
-    {
-      imgUrl: "/static/clifford.webp",
-    },
-    {
-      imgUrl: "/static/clifford.webp",
-    },
-    {
-      imgUrl: "/static/clifford.webp",
-    },
-  ]
+  // const disneyVideos = [
+  //   {
+  //     imgUrl: "/static/clifford.webp",
+  //   },
+  //   {
+  //     imgUrl: "/static/clifford.webp",
+  //   },
+  //   {
+  //     imgUrl: "/static/clifford.webp",
+  //   },
+  // ]
+  const disneyVideos = getVideos();
   return (
     <div className={styles.container}>
       <Head>
