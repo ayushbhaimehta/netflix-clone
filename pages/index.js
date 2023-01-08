@@ -21,7 +21,9 @@ export default function Home() {
         subTitle="this is some random text"
         imgUrl="/static/clifford.webp"
       />
-      <Card />
+      <Card imgUrl="/static/clifford.webp" size="large" />
+      <Card imgUrl="/static/clifford.webp" size="medium" />
+      <Card imgUrl="/static/clifford.webp" size="small" />
       <Loading />
     </div>
   )
