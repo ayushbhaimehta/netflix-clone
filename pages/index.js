@@ -9,7 +9,7 @@ import SectionCards from "../components/card/section-cards"
 import { getVideos } from "../lib/videos"
 
 export async function getServerSideProps() {
-  const disneyVideos = getVideos();
+  const disneyVideos = await getVideos();
   console.log("check server side props");
   return { props: { disneyVideos } };
 }
