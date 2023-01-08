@@ -1,6 +1,11 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
+import Banner from "../components/banner/Banner"
+import NavBar from "../components/nav/navbar"
+import Card from "../components/card/card"
+import Loading from "../components/loading/loading"
+
 
 export default function Home() {
   return (
@@ -12,9 +17,14 @@ export default function Home() {
       </Head>
       <h1>Netflix</h1>
 
-      {/* <NavBar /> */}
-      {/* <Banner /> */}
-      {/* <Card /> */}
+      <NavBar />
+      <Banner
+        title="hi there "
+        subtitle="this is some random text"
+        imgUrl="/static/clifford.webp"
+      />
+      <Card />
+      <Loading />
 
 
     </div>
