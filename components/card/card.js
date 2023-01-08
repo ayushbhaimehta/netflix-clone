@@ -4,10 +4,22 @@ import styles from "./card.module.css";
 
 const card = (props) => {
     const { imgUrl, size } = props;
+    const classMap = {
+        large: styles.lgItem,
+        medium: styles.mdItem,
+        small: styles.smItem,
+    };
     return (
-        <div>
+        <div className={styles.container}>
             Card
-            <Image src={imgUrl} alt="image" width="300" height="300" />
+            <div className={classMap[size]}>
+                <Image
+                    src={imgUrl}
+                    alt="image"
+                    fill
+                    className={styles.cardImg}
+                />
+            </div>
         </div>
     );
 }
