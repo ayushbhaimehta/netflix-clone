@@ -8,7 +8,13 @@ import Loading from "../components/loading/loading"
 import SectionCards from "../components/card/section-cards"
 import { getVideos } from "../lib/videos"
 
-export default function Home() {
+export async function getServerSideProps() {
+  const disneyVideos = getVideos();
+  console.log("check server side props");
+  return { props: { disneyVideos } };
+}
+
+export default function Home({ disneyVideos }) {
   // const disneyVideos = [
   //   {
   //     imgUrl: "/static/clifford.webp",
@@ -20,7 +26,7 @@ export default function Home() {
   //     imgUrl: "/static/clifford.webp",
   //   },
   // ]
-  const disneyVideos = getVideos();
+  // const disneyVideos = getVideos();
   return (
     <div className={styles.container}>
       <Head>
