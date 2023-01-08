@@ -3,12 +3,23 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Banner from "../components/banner/Banner"
 import NavBar from "../components/nav/navbar"
-import Card from "../components/card/card"
+// import Card from "../components/card/card"
 import Loading from "../components/loading/loading"
 import SectionCards from "../components/card/section-cards"
 
 
 export default function Home() {
+  const disneyVideos = [
+    {
+      imgUrl: "/static/clifford.webp",
+    },
+    {
+      imgUrl: "/static/clifford.webp",
+    },
+    {
+      imgUrl: "/static/clifford.webp",
+    },
+  ]
   return (
     <div className={styles.container}>
       <Head>
@@ -22,7 +33,10 @@ export default function Home() {
         subTitle="this is some random text"
         imgUrl="/static/clifford.webp"
       />
-      <SectionCards title="Disney" />
+      <div className={styles.sectionWrapper}>
+        <SectionCards title="Disney" videos={disneyVideos} size="large" />
+        <SectionCards title="Disney" videos={disneyVideos} size="large" />
+      </div>
       <Loading />
     </div>
   )
