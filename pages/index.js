@@ -17,7 +17,7 @@ export default function Home() {
       </Head>
       <h1>Netflix</h1>
 
-      <NavBar />
+      <NavBar username="ayushbhai@bhaibhai.com" />
       <Banner
         title="hi there "
         subTitle="this is some random text"
