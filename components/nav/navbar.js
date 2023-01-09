@@ -9,7 +9,7 @@ const navbar = () => {
     // const { username } = props;
     const router = useRouter();
     const [showDropdown, setShowDropdown] = useState(false);
-    const [username, setUsername] = useState("Rpc");
+    const [username, setUsername] = useState("");
 
     useEffect(() => {
         async function getUsername() {
