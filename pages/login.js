@@ -11,11 +11,11 @@ const handleLoginwithEmail = (e) => {
 
 const login = () => {
     return (
-        <div>
+        <div className={styles.container}>
             <Head>
                 <title>Netflix LogIn</title>
             </Head>
-            <header>
+            <header className={styles.header}>
                 <div className={styles.headerWrapper}>
                     <Link className={styles.logoLink} href="/">
                         <div className={styles.logoWrapper}>
@@ -28,20 +28,21 @@ const login = () => {
                         </div>
                     </Link>
                 </div>
-                <main className={styles.main} >
-                    <div className={styles.mainWrapper}>
-                        <h1 className={styles.signinHeader} >
-                            Sign In
-                        </h1>
-                        <input
-                            type="text"
-                            placeholder='Email address'
-                            className={styles.emailInput} />
-                        <p className={styles.userMsg}></p>
-                        <button onClick={handleLoginwithEmail} className={styles.loginBtn} >Sign In </button>
-                    </div>
-                </main>
             </header>
+
+            <main className={styles.main} >
+                <div className={styles.mainWrapper}>
+                    <h1 className={styles.signinHeader} >
+                        Sign In
+                    </h1>
+                    <input
+                        type="text"
+                        placeholder='Email address'
+                        className={styles.emailInput} />
+                    <p className={styles.userMsg}></p>
+                    <button onClick={handleLoginwithEmail} className={styles.loginBtn} >Sign In </button>
+                </div>
+            </main>
         </div>
     )
 }
