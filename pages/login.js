@@ -34,11 +34,13 @@ const login = () => {
                     email,
                 });
                 console.log({ didToken });
+                if (didToken) {
+                    router.push("/")
+                }
             } catch (error) {
                 // Handle errors if required!
                 console.error("Something went wrong logging in", error);
             }
-            // router.push("/")
         }
     }
 
