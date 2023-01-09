@@ -1,13 +1,29 @@
 import { useRouter } from 'next/router';
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from "./navbar.module.css"
 import Link from 'next/link'
 import Image from 'next/image';
+import { magic } from "../../lib/magic-client";
 
-const navbar = (props) => {
-    const { username } = props;
+const navbar = () => {
+    // const { username } = props;
     const router = useRouter();
     const [showDropdown, setShowDropdown] = useState(false);
+    const [username, setUsername] = useState("Rpc");
+
+    useEffect(() => {
+        async function getUsername() {
+            try {
+                const { email } = await magic.user.getMetadata();
+                setUsername(email);
+
+            } catch (error) {
+                console.log("Error retrieving email:", error);
+            }
+        }
+        getUsername();
+    }, []);
+
     const handleOnclickHome = (e) => {
         console.log("home clicked");
         e.preventDefault()
@@ -44,6 +60,7 @@ const navbar = (props) => {
                 <nav className={styles.navContainer}>
                     <div>
                         <button className={styles.usernameBtn} onClick={handleDropdown}>
+                            {console.log({ username })}
                             <p className={styles.username}>{username}</p>
                             <Image
                                 src="/static/expand_more.svg"

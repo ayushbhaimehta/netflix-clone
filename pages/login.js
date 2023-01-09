@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from "../styles/login.module.css"
@@ -12,6 +12,18 @@ const login = () => {
     const [userMsg, setUserMsg] = useState("");
     const [isLoading, setIsLoading] = useState(false);
     const router = useRouter();
+    useEffect(() => {
+        const handleComplete = () => {
+            setIsLoading(false);
+        };
+        router.events.on("routeChangeComplete", handleComplete);
+        router.events.on("routeChangeError", handleComplete);
+
+        return () => {
+            router.events.off("routeChangeComplete", handleComplete);
+            router.events.off("routeChangeError", handleComplete);
+        };
+    }, [router]);
 
     const handleEmailchange = (e) => {
         console.log("email changed bro");
@@ -38,7 +50,7 @@ const login = () => {
                 });
                 console.log({ didToken });
                 if (didToken) {
-                    setIsLoading(false)
+                    // setIsLoading(false)
                     router.push("/")
                 }
             } catch (error) {
