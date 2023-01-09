@@ -33,7 +33,7 @@ export default function Home({
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <NavBar username="ankita@ank.com" />
+      <NavBar username="abcd@1.com" />
       <Banner
         title="Clifford the red dog"
         subTitle="a very cute dog"

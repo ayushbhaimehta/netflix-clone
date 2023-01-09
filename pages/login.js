@@ -3,12 +3,14 @@ import React, { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import styles from "../styles/login.module.css"
+import { useRouter } from 'next/router'
 
 
 
 const login = () => {
     const [email, setEmail] = useState("");
     const [userMsg, setUserMsg] = useState("");
+    const router = useRouter();
 
     const handleEmailchange = (e) => {
         console.log("email changed bro");
@@ -22,12 +24,12 @@ const login = () => {
         e.preventDefault;
         // setUserMsg("enter a Valid email")
 
-        if (email) {
-            // main page open karna hai 
+        if (email !== "abcd@1.com") {
             setUserMsg("enter a Valid email")
-
         } else {
-            //route
+            // main page open karna hai 
+            console.log("route to main page");
+            router.push("/")
         }
     }
 
