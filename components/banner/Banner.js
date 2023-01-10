@@ -1,13 +1,16 @@
 import React from 'react'
 import Image from "next/image";
 import styles from "./banner.module.css"
-
-const handleOnPlay = () => {
-    console.log("play button on banner has been clicked");
-}
+import { useRouter } from 'next/router';
 
 const Banner = (props) => {
-    const { title, subTitle, imgUrl } = props;
+    const { title, subTitle, imgUrl, id } = props;
+    const router = useRouter();
+
+    const handleOnPlay = () => {
+        console.log("play button on banner has been clicked");
+        router.push(`video/${id}`);
+    }
     return (
         <div className={styles.container}>
             <div className={styles.leftWrapper}>
