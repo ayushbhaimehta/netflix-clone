@@ -19,7 +19,7 @@ const SectionCards = (props) => {
                 })}
             </div>
         </section>
-    );
+    )
 }
 
 export default SectionCards 
