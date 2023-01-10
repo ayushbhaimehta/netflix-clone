@@ -19,6 +19,7 @@ const Video = () => {
             >
                 <div>
                     <iframe
+                        className={styles.videoPlayer}
                         id="ytplayer"
                         type="text/html"
                         width="100%"
