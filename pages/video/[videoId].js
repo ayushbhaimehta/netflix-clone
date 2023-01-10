@@ -7,7 +7,7 @@ const Video = () => {
     const id = router.query.videoId;
     console.log({ id });
     return (
-        <div>Hello id</div>
+        id
     )
 }
 
