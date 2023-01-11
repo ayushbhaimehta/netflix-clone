@@ -3,22 +3,25 @@ import React from 'react';
 import Modal from "react-modal";
 import styles from "../../styles/Video.module.css";
 import cls from "classnames";
+import { getYtVideobyID } from "../../lib/videos"
 
 Modal.setAppElement("#__next");
 
 export async function getStaticProps() {
     //data to fetch from API
-    const video = {
-        title: "Hi Ayush the great",
-        publishTime: "20-06-2002",
-        description: "By returning { props: { posts } }, the Blog compo By returning { props: { posts } }, the Blog compo By returning { props: { posts } }, the Blog compoBy returning { props: { posts } }, the Blog compoBy returning { props: { posts } }, the Blog compo",
-        channelTitle: "Mehta Productions",
-        viewCount: 100000,
-    };
+    // const video = {
+    //     title: "Hi Ayush the great",
+    //     publishTime: "20-06-2002",
+    //     description: "By returning { props: { posts } }, the Blog compo By returning { props: { posts } }, the Blog compo By returning { props: { posts } }, the Blog compoBy returning { props: { posts } }, the Blog compoBy returning { props: { posts } }, the Blog compo",
+    //     channelTitle: "Mehta Productions",
+    //     viewCount: 100000,
+    // };
+    const videoId = "QOU-BkOSTjk";
+    const videoArray = await getYtVideobyID(videoId);
 
     return {
         props: {
-            video,
+            video: videoArray.length > 0 ? videoArray[0] : {},
         },
         revalidate: 10, // In seconds
     };
@@ -43,7 +46,7 @@ const Video = ({ video }) => {
         publishTime,
         description,
         channelTitle,
-        viewCount
+        statistics: { viewCount } = { viewCount: 0 },
     } = video;
     return (
         <div className={styles.container}>
