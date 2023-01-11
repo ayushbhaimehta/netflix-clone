@@ -6,8 +6,8 @@ import NavBar from "../components/nav/navbar";
 // import Card from "../components/card/card";
 import SectionCards from "../components/card/section-cards";
 import { getPopularVideos, getVideos } from "../lib/videos";
-// import { magic } from "../lib/magic-client"
-
+import { magic } from "../lib/magic-client"
+import { startFetchMyQuery } from "../lib/db/hasura"
 
 export async function getServerSideProps(context) {
   const disneyVideos = await getVideos("Avengers");
@@ -27,7 +27,8 @@ export default function Home({
   productivityVideos,
   popularVideos
 }) {
-  // console.log({ magic });
+  console.log({ magic });
+  startFetchMyQuery();
   return (
     <div className={styles.container}>
       <Head>
