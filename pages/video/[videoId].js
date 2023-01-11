@@ -7,7 +7,7 @@ import { getYtVideobyID } from "../../lib/videos"
 
 Modal.setAppElement("#__next");
 
-export async function getStaticProps() {
+export async function getStaticProps(context) {
     //data to fetch from API
     // const video = {
     //     title: "Hi Ayush the great",
@@ -16,7 +16,8 @@ export async function getStaticProps() {
     //     channelTitle: "Mehta Productions",
     //     viewCount: 100000,
     // };
-    const videoId = "QOU-BkOSTjk";
+    console.log({ context });
+    const videoId = context.params.videoId;
     const videoArray = await getYtVideobyID(videoId);
 
     return {
