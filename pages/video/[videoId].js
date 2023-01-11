@@ -4,6 +4,7 @@ import Modal from "react-modal";
 import styles from "../../styles/Video.module.css";
 import cls from "classnames";
 import { getYtVideobyID } from "../../lib/videos"
+import NavBar from "../../components/nav/navbar";
 
 Modal.setAppElement("#__next");
 
@@ -51,6 +52,7 @@ const Video = ({ video }) => {
     } = video;
     return (
         <div className={styles.container}>
+            <NavBar />
             <Modal
                 isOpen={true}
                 contentLabel="Watch the video"
