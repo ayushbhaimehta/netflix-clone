@@ -37,7 +37,7 @@ export default function Home({
       <NavBar />
       {/* username="abcd@1.com" */}
       <Banner
-        id="testID"
+        id="QOU-BkOSTjk"
         title="Clifford the red dog"
         subTitle="a very cute dog"
         imgUrl="/static/clifford.webp"

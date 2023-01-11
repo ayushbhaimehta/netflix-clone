@@ -6,17 +6,38 @@ import cls from "classnames";
 
 Modal.setAppElement("#__next");
 
-const Video = () => {
-    const router = useRouter();
-    console.log({ router });
-
+export async function getStaticProps() {
+    //data to fetch from API
     const video = {
         title: "Hi Ayush the great",
         publishTime: "20-06-2002",
-        description: "To prepare for it or not that is the question my friend because it is going to absolutely soak my 3 monthsTo prepare for it or not that is the question my friend because it is going to absolutely soak my 3 monthsTo prepare for it or not that is the question my friend because it is going to absolutely soak my 3 monthsTo prepare for it or not that is the question my friend because it is going to absolutely soak my 3 monthsTo prepare for it or not that is the question my friend because it is going to absolutely soak my 3 monthsTo prepare for it or not that is the question my friend because it is going to absolutely soak my 3 monthsTo prepare for it or not that is the question my friend because it is going to absolutely soak my 3 monthsTo prepare for it or not that is the question my friend because it is going to absolutely soak my 3 monthsTo prepare for it or not that is the question my friend because it is going to absolutely soak my 3 monthsTo prepare for it or not that is the question my friend because it is going to absolutely soak my 3 monthsTo prepare for it or not that is the question my friend because it is going to absolutely soak my 3 monthsTo prepare for it or not that is the question my friend because it is going to absolutely soak my 3 monthsTo prepare for it or not that is the question my friend because it is going to absolutely soak my 3 monthsTo prepare for it or not that is the question my friend because it is going to absolutely soak my 3 monthsTo prepare for it or not that is the question my friend because it is going to absolutely soak my 3 monthsTo prepare for it or not that is the question my friend because it is going to absolutely soak my 3 monthsTo prepare for it or not that is the question my friend because it is going to absolutely soak my 3 monthsTo prepare for it or not that is the question my friend because it is going to absolutely soak my 3 monthsTo prepare for it or not that is the question my friend because it is going to absolutely soak my 3 monthsTo prepare for it or not that is the question my friend because it is going to absolutely soak my 3 monthsTo prepare for it or not that is the question my friend because it is going to absolutely soak my 3 monthsTo prepare for it or not that is the question my friend because it is going to absolutely soak my 3 monthsTo prepare for it or not that is the question my friend because it is going to absolutely soak my 3 monthsTo prepare for it or not that is the question my friend because it is going to absolutely soak my 3 monthsTo prepare for it or not that is the question my friend because it is going to absolutely soak my 3 monthsTo prepare for it or not that is the question my friend because it is going to absolutely soak my 3 monthsTo prepare for it or not that is the question my friend because it is going to absolutely soak my 3 monthsTo prepare for it or not that is the question my friend because it is going to absolutely soak my 3 monthsTo prepare for it or not that is the question my friend because it is going to absolutely soak my 3 monthsTo prepare for it or not that is the question my friend because it is going to absolutely soak my 3 monthsTo prepare for it or not that is the question my friend because it is going to absolutely soak my 3 monthsTo prepare for it or not that is the question my friend because it is going to absolutely soak my 3 monthsTo prepare for it or not that is the question my friend because it is going to absolutely soak my 3 months",
+        description: "By returning { props: { posts } }, the Blog compo By returning { props: { posts } }, the Blog compo By returning { props: { posts } }, the Blog compoBy returning { props: { posts } }, the Blog compoBy returning { props: { posts } }, the Blog compo",
         channelTitle: "Mehta Productions",
         viewCount: 100000,
     };
+
+    return {
+        props: {
+            video,
+        },
+        revalidate: 10, // In seconds
+    };
+}
+
+export async function getStaticPaths() {
+    const listOfVideos = ["SUmPRdUjB7c", "QOU-BkOSTjk", "G6PNPHveIoM"];
+    const paths = listOfVideos.map((videoId) => ({
+        params: { videoId },
+    }));
+
+    return { paths, fallback: "blocking" };
+}
+
+const Video = ({ video }) => {
+    const router = useRouter();
+    console.log({ router });
+
+
     const {
         title,
         publishTime,
