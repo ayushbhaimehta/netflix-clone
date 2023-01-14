@@ -37,7 +37,7 @@ const login = () => {
         e.preventDefault;
         // setUserMsg("enter a Valid email")
 
-        if (email !== "ayushbhaimehta20002@gmail.com") {
+        if (email !== "sahajgrover1995@gmail.com") {
             setIsLoading(false)
             setUserMsg("enter a Valid email")
         } else {
