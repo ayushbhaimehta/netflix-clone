@@ -32,13 +32,13 @@ export default async function login(req, res) {
             if (isNewUserQuery) {
                 const createNewUserMutation = await createNewUser(token, metadata);
                 console.log({ createNewUserMutation });
-                const cookie = setTokenCookie(token);
+                const cookie = setTokenCookie(token, res);
                 console.log({ cookie });
                 // cookie in both places
                 res.send({ done: true, msg: "is a new user" });
             } else {
                 //cookie
-                const cookie = setTokenCookie(token);
+                const cookie = setTokenCookie(token, res);
                 console.log({ cookie });
                 res.send({ done: true, msg: "not a new user" });
             }
