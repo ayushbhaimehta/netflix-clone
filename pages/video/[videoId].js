@@ -1,5 +1,6 @@
 import { useRouter } from 'next/router';
 import React from 'react';
+import { useState } from 'react';
 import Modal from "react-modal";
 import styles from "../../styles/Video.module.css";
 import cls from "classnames";
@@ -15,7 +16,7 @@ export async function getStaticProps(context) {
     // const video = {
     //     title: "Hi Ayush the great",
     //     publishTime: "20-06-2002",
-    //     description: "By returning { props: { posts } }, the Blog compo By returning { props: { posts } }, the Blog compo By returning { props: { posts } }, the Blog compoBy returning { props: { posts } }, the Blog compoBy returning { props: { posts } }, the Blog compo",
+    //     description: "By returning { props:  { posts } }, the Blog compo By returning { props: { posts } }, the Blog compo By returning { props: { posts } }, the Blog compoBy returning { props: { posts } }, the Blog compoBy returning { props: { posts } }, the Blog compo",
     //     channelTitle: "Mehta Productions",
     //     viewCount: 100000,
     // };
@@ -43,13 +44,8 @@ export async function getStaticPaths() {
 const Video = ({ video }) => {
     const router = useRouter();
     console.log({ router });
-
-    const likeHandler = () => {
-        console.log("like button clicked");
-    }
-    const dislikeHandler = () => {
-        console.log("disliek button clicked");
-    }
+    const [toggleLike, setToggleLike] = useState(false);
+    const [toggleDisLike, setToggleDisLike] = useState(false);
 
     const {
         title,
@@ -58,6 +54,20 @@ const Video = ({ video }) => {
         channelTitle,
         statistics: { viewCount } = { viewCount: 0 },
     } = video;
+
+
+    const handleToggleDislike = async () => {
+        console.log("handleToggleDislike");
+        setToggleDisLike(!toggleDisLike);
+        setToggleLike(toggleDisLike);
+    };
+
+    const handleToggleLike = async () => {
+        console.log("handleToggleLike");
+        setToggleLike(!toggleLike);
+        setToggleDisLike(toggleLike);
+    };
+
     return (
         <div className={styles.container}>
             <NavBar />
@@ -80,15 +90,15 @@ const Video = ({ video }) => {
                 </iframe>
 
                 <div className={styles.likeDislikeBtnWrapper}>
-                    <button onclick={likeHandler}>
+                    <button onClick={handleToggleLike}>
                         <div className={styles.btnWrapper}>
-                            <Like />
+                            <Like selected={toggleLike} />
                         </div>
                     </button>
 
-                    <button onclick={dislikeHandler}>
+                    <button onClick={handleToggleDislike}>
                         <div className={styles.btnWrapper}>
-                            <Dislike />
+                            <Dislike selected={toggleDisLike} />
                         </div>
                     </button>
                 </div>
