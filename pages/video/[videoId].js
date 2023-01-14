@@ -80,16 +80,17 @@ const Video = ({ video }) => {
                 </iframe>
 
                 <div className={styles.likeDislikeBtnWrapper}>
-                    <div className={styles.btnWrapper}>
-                        <button onclick={likeHandler}>
+                    <button onclick={likeHandler}>
+                        <div className={styles.btnWrapper}>
                             <Like />
-                        </button>
-                    </div>
-                    <div className={styles.btnWrapper}>
-                        <button onclick={dislikeHandler}>
+                        </div>
+                    </button>
+
+                    <button onclick={dislikeHandler}>
+                        <div className={styles.btnWrapper}>
                             <Dislike />
-                        </button>
-                    </div>
+                        </div>
+                    </button>
                 </div>
 
                 <div className={styles.modalBody}>
