@@ -5,6 +5,8 @@ import styles from "../../styles/Video.module.css";
 import cls from "classnames";
 import { getYtVideobyID } from "../../lib/videos"
 import NavBar from "../../components/nav/navbar";
+import Like from "../../components/icons/like-icon";
+import Dislike from "../../components/icons/dislike-icon";
 
 Modal.setAppElement("#__next");
 
@@ -42,6 +44,12 @@ const Video = ({ video }) => {
     const router = useRouter();
     console.log({ router });
 
+    const likeHandler = () => {
+        console.log("like button clicked");
+    }
+    const dislikeHandler = () => {
+        console.log("disliek button clicked");
+    }
 
     const {
         title,
@@ -68,7 +76,21 @@ const Video = ({ video }) => {
                     height="360"
                     src={`https://www.youtube.com/embed/${router.query.videoId}?autoplay=0&origin=http://example.com&controls=0&rel=1`}
                     frameBorder="0"
-                ></iframe>
+                >
+                </iframe>
+
+                <div className={styles.likeDislikeBtnWrapper}>
+                    <div className={styles.btnWrapper}>
+                        <button onclick={likeHandler}>
+                            <Like />
+                        </button>
+                    </div>
+                    <div className={styles.btnWrapper}>
+                        <button onclick={dislikeHandler}>
+                            <Dislike />
+                        </button>
+                    </div>
+                </div>
 
                 <div className={styles.modalBody}>
                     <div className={styles.modalBodyContent}>
