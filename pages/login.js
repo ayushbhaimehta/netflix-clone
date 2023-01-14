@@ -37,25 +37,38 @@ const login = () => {
         e.preventDefault;
         // setUserMsg("enter a Valid email")
 
-        if (email !== "sahajgrover1995@gmail.com") {
+        if (email === null) {
             setIsLoading(false)
             setUserMsg("enter a Valid email")
         } else {
             // main page open karna hai 
             console.log("route to main page");
             try {
-                setIsLoading(true);
                 const didToken = await magic.auth.loginWithMagicLink({
                     email,
                 });
                 console.log({ didToken });
                 if (didToken) {
-                    // setIsLoading(false)
-                    router.push("/")
+                    const response = await fetch("/api/login", {
+                        method: "POST",
+                        headers: {
+                            Authorization: `Bearer ${didToken}`,
+                            "Content-Type": "application/json",
+                        },
+                    });
+
+                    const loggedInResponse = await response.json();
+                    if (loggedInResponse.done) {
+                        router.push("/");
+                    } else {
+                        setIsLoading(false);
+                        setUserMsg("Something went wrong logging in");
+                    }
                 }
             } catch (error) {
                 // Handle errors if required!
                 console.error("Something went wrong logging in", error);
+                setIsLoading(false);
             }
         }
     }
