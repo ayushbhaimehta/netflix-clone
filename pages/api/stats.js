@@ -1,11 +1,21 @@
+import jwt from "jsonwebtoken";
+
 export default async function stats(req, resp) {
     if (req.method === "POST") {
         console.log({ cookies: req.cookies });
 
         try {
-            if (!req.cookies.token) {
+            const token = req.cookies.token
+            if (!token) {
                 resp.status(403).send({});
             } else {
+                const decoded = jwt.verify(token, process.env.JWT_SECRET);
+                console.log({ decoded }) // bar
+
+                // verify a token symmetric
+                // jwt.verify(token, 'shhhhh', function (err, decoded) {
+                //     console.log({decoded}) // bar
+                // });
                 resp.send({ msg: "it works" });
             }
         } catch (error) {
